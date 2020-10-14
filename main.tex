@@ -1,0 +1,251 @@
+%% Copyright 2006-1008 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[10pt,a4paper,colorlinks=true]{moderncv}
+
+% moderncv themes
+%\moderncvtheme[blue, roman]{casual}                 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
+\moderncvtheme[blue]{classic}                % idem
+
+% character encoding
+\usepackage[utf8]{inputenc}                   % replace by the encoding you are using
+%\usepackage[catalan]{babel}
+\usepackage[english]{babel}
+
+\usepackage{fontawesome}
+\usepackage{changepage}     % for the adjustwidth environment
+
+% Add a timeline on the left
+\setlength{\hintscolumnwidth}{4.1cm} % Width of the timeline on your left
+\usepackage{moderntimeline/moderntimeline}
+\tlmaxdates{2007}{2020}              % Beggining and start of your timeline
+
+% Globally modify itemsep on itemize environment
+\usepackage{enumitem}
+\setitemize{itemsep=4pt}
+
+
+% adjust the page margins
+%\addtolength{\voffset}{1cm}		% it works
+\usepackage[scale=0.8]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}						% if you want to change the width of the column with the dates
+%\AtBeginDocument{\setlength{\maketitlenamewidth}{6cm}}  % only for the classic theme, if you want to change the width of your name placeholder (to leave more space for your address details
+\AtBeginDocument{\recomputelengths}                     % required when changes are made to page layout lengths
+
+% personal data
+\firstname{Gerard}
+\familyname{Bosch}
+\title{Curriculum Vitae}               % optional, remove the line if not wanted
+\address{\faMapMarker~ Barcelona, Spain}    % optional, remove the line if not wanted
+\mobile{+34 680 271 551}                    % optional, remove the line if not wanted
+%\phone{}                                   % optional, remove the line if not wanted
+%\fax{fax (optional)}                       % optional, remove the line if not wanted
+\email{gerard.bosch@gmail.com}              % optional, remove the line if not wanted
+%\extrainfo{Nationality: Spain} % optional, remove the line if not wanted
+\photo[64pt]{pic2.jpg}                         % '64pt' is the height the picture must be resized to and 'picture' is the name of the picture file; optional, remove the line if not wanted
+%\quote{Some quote (optional)}                 % optional, remove the line if not wanted
+
+%\nopagenumbers{}                             % uncomment to suppress automatic page numbering for CVs longer than one page
+
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+\maketitle
+
+% Increase cventry vertical space
+\setlength{\parskip}{4pt}
+
+% \vspace{-0.7cm}
+% \section{\textsc{Personal Information}}
+% \cvline{Name}{Gerard Bosch}
+% \cvline{Nationality}{}
+%\cvline{Edad}{25}
+% \cvline{Birthdate}{}
+% \cvline{Address}{}
+% \cvline{}{}
+% \cvline{Phone}{}
+% \cvline{e-mail}{gerard.bosch@gmail.com}
+
+[ \emph{Read the résumé version} at \href{https://gerardbosch.github.io/resume}{https://gerardbosch.github.io/resume} ] \\[2pt]
+
+
+\section{\textsc{Summary}}
+\vspace{1em}
+\begin{adjustwidth}{1cm}{1cm}
+
+Enthusiast about Functional Programming, software engineering/craftsmanship, clean code, architectural/design patterns and programming languages theory. Really concerned about the code itself, its readability and conciseness. Continuous improvement advocate. Accidental-complexity fighter. Like learning, love crafting. Proactive and autodidact.
+
+My background is mostly about designing and implementing backend systems. I have good analysis skills and can break down requirements well and transform that into code.
+\end{adjustwidth}
+
+\vspace{1em}
+\section{\textsc{Professional Experience}}
+
+%\cventry{year--year}{Job title}{Employer}{City}{}{Description}                % arguments 3 to 6 are optional
+%\cventry{year--year}{Job title}{Employer}{City}{}{Description line 1\newline{}Description line 2}% arguments 3 to 6 are optional
+
+% \renewcommand{\labelitemi}{$-$}
+
+\tlcventry{2016}{0}{Senior Software Engineer}{GFT IT Consulting}{Lleida/Barcelona}{}{
+  \vspace{-5pt}
+  PROJECT HIGHLIGHTS (\textit{most relevant projects only}):
+  \begin{itemize}\setlength\itemsep{4pt}
+     \item \textit{Banc Sabadell}: Middleware Architecture (2020) \\[2pt]
+           \textbf{Role}: Software Engineer \\[2pt]
+           Start redefining from scratch a whole new framework and development environment based on MsA, Spring Boot, API First, Event Driven, DDD, Hexagonal and so forth.
+     \item \textit{Banc Sabadell}: PSD2 \& APIfication (2018--2020) \\[2pt]
+           \textbf{Role}: Technical Leader (development team) \\[2pt]
+           Design and implement the APIs for the European regulatory PSD2 project, leading the first approach to API exposition for the Banc Sabadell. I worked both on the API definition side and the Architecture side, defining and implementing architectural components for the Microservices Architecture where I was established as the technical lead for the development team until post-production.
+     \item \textit{Bankinter}: Microservice architecture (2017) \\[2pt]
+           \textbf{Role}: Developer \\[2pt]
+           Worked in the development of an architecture for Bankinter based on MSA (Micro Services Architecture) with Java 8 and Spring Boot/Cloud. The Architecture provided the preconfigured components: from security, logging, audit,... to cryptography to allow developers to easily get started implementing small micro-services with not much Spring background required.
+     \item \textit{Company presentation}: \href{https://gerardbosch.github.io/blockchain-presentation/}{A technical introduction to Blockchain technology}.
+   \end{itemize}
+   \textbf{Keywords}: \textit{Spring, Java, Vavr, FP, OpenShift, OpenAPI, API-First, Blockchain.}
+}
+
+\tlcventry{2014}{2016}{Software Engineer}{ICG Software}{Torrefarrera, Lleida}{}{
+  Senior developer in charge of mobile solutions for business domains.
+  \begin{itemize}
+ \item Architecting mobile applications for Android and Windows Phone platforms.
+ \item Using the last cutting-edge technologies and libraries (Android data binding, Realm databases, Gson parser, Retrofit\ldots).
+ \item Architectural and design patterns implementation.
+ %\item --
+\end{itemize}
+\textbf{Keywords}: Java, C\#/.NET, Mobile apps, Android, Windows Phone, Realm.
+}
+
+
+\tlcventry{2011}{2013}{Researcher/developer}{Artificial Intelligence Research Institute (IIIA)-Spanish National Research Council (CSIC)}{Bellaterra}{}{Hired for the research project Innpacto-2011 (Spanish Science and Innovation Ministry), \emph{NEWMATICA: Intelligent and Energy Efficient Advanced System for Vacuum Waste Collection} (IPT-2011-1496-310000). In collaboration with University of Lleida.
+%\renewcommand{\labelitemi}{$-$}
+\begin{itemize}
+ \item Research on artificial intelligence algorithms and machine learning.
+ \item Design and implementation of a simulator, modelling of real plants topology and operation. Experimentation running bulk simulations in a cluster and automatic processing and representation of results.
+ \item Implementation of algorithms based on \emph{Approximate Dynamic Programming} (Reinforcement Learning) in order to optimize operational plans of waste collecting plants.
+\end{itemize}
+\textbf{Keywords}: Approximate Dynamic Programming, ADP, Discrete Event Simulation, DES, Integer Linear Programming, ILP, modelling, data collection, AI, research, planning, optimization, Python.
+}
+
+\tlcventry{2010}{2011}{Systems/comms operations}{Information Systems and Communications Area, University of Lleida}{Lleida}{}{
+%\renewcommand{\labelitemi}{$-$}
+\begin{itemize}
+\item Setting up and deployment of Open-Exchange system (\emph{Open Source}) covering the need of a corporative \emph{Groupware} for the university staff. Set up, deployment, integration and maintenance of the service. Integration of the system with the corporative mobile phones.
+\item Setting up of an open source system for the management of name servers (DNS) in the university.
+\item Installation and management of GNU/Linux servers and virtual machines.
+\end{itemize}
+\textbf{Keywords:} Linux, virtualization, servers, DNS, networking, groupware
+}
+
+
+
+
+\section{\textsc{Technical Skills}}
+
+%\cvcomputer{category 1}{XXX, YYY, ZZZ}{category 4}{XXX, YYY, ZZZ}
+%\cvcomputer{Operating Systems}{MS Windows, GNU/Linux (installation, administration, configuration and server administration.)}
+%{Networks}{Architectures and net protocols: TCP, UDP, HTTP, DNS, WLAN; routing, firewalling\ldots\\
+%Equipment and services configuration. \\
+%Distributed environments programming, RMI, Web Services.
+%}
+
+\cvcomputer{Programming languages}{Java, Scala, Kotlin, Bash, Haskell, Python, Perl.}
+           {Others}{Git, Maven, Gradle, SBT, \LaTeX, GNU utils, Cloud Computing}
+
+\cvcomputer{Development methodologies}{GoF design patterns, SOLID, Agile development, SCRUM, Domain-Driven-Design, Test-Driven Development (TDD).}{}{}
+
+
+
+% \subsection{Altres feines compaginades amb els estudis en períodes no lectius}
+%\cventry{year--year}{Job title}{Employer}{City}{}{Description}                % arguments 3 to 6 are optional
+%\cventry{year--year}{Job title}{Employer}{City}{}{Description line 1\newline{}Description line 2}% arguments 3 to 6 are optional
+% \cventry{estius 2007, 2008}{Tècnic en maquinaria d'hostaleria}{AZK Lleida}{Lleida}{}{Reparació de maquinària d'hostaleria i electrònica.}
+%\cvline{oct--des 2006}{Dufer Artículos Publicitarios, Lleida\newline \textsl{Tasques de repartidor, gestió de magatzem i atenció al client en empresa de publicitat com a reforç durant la campanya de nadal}.}
+%\cvline{estius 2002--2006}{Carbonell Bosch S.L., Puigverd de Lleida\newline \textsl{Treball en empresa de construcció durant els estius entre 2002 i 2006.}}
+% \subsection{Miscellaneous}
+
+\section{\textsc{Conference Attendance}}
+\cventry{2019}{API Days}{Paris}{}{}{}
+\cventry{2018}{API Days}{Paris}{}{}{}
+\cventry{2018}{Ethereum Community Conference}{Paris}{}{}{}
+\cventry{2017}{JBcnConf}{Barcelona}{}{}{}
+
+\section{\textsc{Education}}
+%\cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}  % arguments 3 to 6 are optional
+\cventry{2011}{Master in Open Source Software Engineering}{University of Lleida}{Lleida / \textit{VIA University College} (Denmark)}{}{}
+\cventry{2011}{IT Engineering Higher Degree}{University of Lleida}{Lleida / \textit{VIA University College} (Denmark)}{}{}
+\cventry{2005--2010}{IT Engineering Bachelor}{University of Lleida}{Lleida}{}{}
+
+
+\section{\textsc{Final Degree Dissertations}}
+\subsection{Master in Open Source Software Engineering}
+%\cvline{title}{\emph{Title}}
+%\cvline{supervisors}{Supervisors}
+%\cvline{description}{\small Short thesis abstract}
+\cvline{title}{\emph{Setting up and deployment of Sauron system for DNS system management at University of Lleida.}}
+\cvline{date}{28--09--2011}
+\cvline{advisor}{Dr. Carles Mateu Piñol, Department of Computer Science and Industrial Engineering, University of Lleida, Lleida.}
+\cvline{description}{Setting up an open source system for the name servers (DNS) management of the university. Integration of several open source components together with an LDAP database into ISC BIND name server. Implementation, configuration, integration and deployment of that system in the university's production infrastructure.}
+\cvline{}{\textsl{\textbf{Qualified} with honors.}}
+\cvline{document link}{\href{https://repositori.udl.cat/bitstream/handle/10459.1/45832/Bosch.pdf}{https://repositori.udl.cat/bitstream/handle/10459.1/45832/Bosch.pdf}}
+\cvline{}{\footnotesize{(Catalan + English full configuration guide)}}
+\cvline{presentation (english)}{\scalebox{.7}{\url{http://www.slideshare.net/rockingerard/sauron-system-implementation-and-deployment-for-dns-management}}}
+
+
+\subsection{IT Engineering Bachelor}
+%\cvline{title}{\emph{Title}}
+%\cvline{supervisors}{Supervisors}
+%\cvline{description}{\small Short thesis abstract}
+
+\cvline{title}{\emph{Implementation of Golay codes in SAGE.}}
+\cvline{date}{15--01--2010}
+\cvline{advisor}{Dr. Ramiro Moreno Chiral, Department of Mathematics, University of Lleida, Lleida.}
+\cvline{description}{Implementation of a kind of channel error correcting codes (ECC) inside mathematical Open Source Software package SAGE, which is built up in Python and just previously had a generic implementation for linear codes.}
+\cvline{}{\textsl{\textbf{Qualified} with honors.}}
+\cvline{document link}{\href{https://repositori.udl.cat/bitstream/handle/10459.1/45751/Bosch.pdf}{https://repositori.udl.cat/bitstream/handle/10459.1/45751/Bosch.pdf}}
+\cvline{presentation}{\scalebox{.85}{\url{http://www.slideshare.net/rockingerard/implementaci-dels-codis-de-golay-en-sage}}}
+
+
+
+\section{\textsc{Languages}}
+\cvlanguage{Catalan}{Mother tongue}{}
+\cvlanguage{Spanish}{Mother tongue}{}
+\cvlanguage{English}{\mbox{B2 \textnormal{CEFR (Common European Framework of Reference)}}}{}
+
+
+
+%\section{Driving license}
+%\cvline{}{B license.}
+
+\vspace{\fill}
+% \vspace{\fill}
+\begin{flushright}Last updated: \today \end{flushright}
+
+%\section{Interests}
+%\cvline{hobby 1}{\small Description}
+%\cvline{hobby 2}{\small Description}
+%\cvline{hobby 3}{\small Description}
+
+\renewcommand{\listitemsymbol}{-} % change the symbol for lists
+
+%\section{Extra 1}
+%\cvlistitem{Item 1}
+%\cvlistitem{Item 2}
+%\cvlistitem[+]{Item 3}            % optional other symbol
+
+%\section{Extra 2}
+%\cvlistdoubleitem[\Neutral]{Item 1}{Item 4}
+%\cvlistdoubleitem[\Neutral]{Item 2}{Item 5}
+%\cvlistdoubleitem[\Neutral]{Item 3}{}
+
+% Publications from a BibTeX file
+%\nocite{*}
+%\bibliographystyle{plain}
+%\bibliography{publications}       % 'publications' is the name of a BibTeX file
+
+\end{document}

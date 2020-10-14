@@ -1,10 +1,10 @@
-# Resume
+# Curriculum Vitae
 
 LaTeX source for my CV.
 
 [Click here](http://gerardbosch.github.io/cv) to see the up to date PDF version.
 
-👆 The PDF is build and published on GitHup Pages using GitHub Actions :)
+👆 The PDF is build and published on GitHub Pages using GitHub Actions :)
 
 # How to build
 
