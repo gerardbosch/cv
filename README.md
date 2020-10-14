@@ -1,4 +1,4 @@
-# Resume
+# Curriculum Vitae
 
 LaTeX source for my CV.
 
