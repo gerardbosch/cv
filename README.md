@@ -13,7 +13,7 @@ to be sure).
 Then:
 
 ```
-pdflatex main.tex
+lualatex main.tex
 ```
 
 That's it!
