@@ -1,3 +1,5 @@
+![Build Status](https://github.com/gerardbosch/cv/actions/workflows/deploy-pdf.yml/badge.svg)
+
 # Curriculum Vitae
 
 LaTeX source for my CV.
