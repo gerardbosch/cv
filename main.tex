@@ -26,9 +26,10 @@
 \usepackage{enumitem}
 \setitemize{itemsep=4pt}
 
-% Adjust the page margins
-%\addtolength{\voffset}{1cm}		% it works
+% Adjust the page margins: Easy layout setup
+%\addtolength{\voffset}{1cm}
 \usepackage[scale=0.8]{geometry}
+\addtolength{\textheight}{1cm}
 %\setlength{\hintscolumnwidth}{3cm}						% if you want to change the width of the column with the dates
 %\AtBeginDocument{\setlength{\maketitlenamewidth}{6cm}} % only for the classic theme, if you want to change the width of your name placeholder (to leave more space for your address details
 \AtBeginDocument{\recomputelengths}                     % required when changes are made to page layout lengths
@@ -111,7 +112,11 @@
 % Increase cventry vertical space
 \setlength{\parskip}{4pt}
 
-\begin{flushright}Last updated: \today \end{flushright}
+% Live CV note
+\vspace{-2ex}\centerline{
+  \href{https://gerardbosch.github.io/cv/}{\emoji{person-gesturing-ok} \textcolor{black}{This CV is \textcolor{magenta}{live!} By clicking here you will access the most \textbf{up-to-date} version \emoji{person-gesturing-ok}}}
+}\vspace{4ex}
+
 [ \emph{Read the résumé version at} \href{https://gerardbosch.github.io/resume}{https://gerardbosch.github.io/resume} ]
 
 % \vspace{-0.7cm}
@@ -290,8 +295,13 @@ Really concerned about the code itself, its readability, expressiveness and conc
 %\cvline{hobby 2}{\small Description}
 %\cvline{hobby 3}{\small Description}
 
+\vspace{1.5em}
+\begin{flushright}
+  \emph{The current copy was last updated on} \today.\\*  % new line preventing page break
+  \href{https://gerardbosch.github.io/cv/}{\emph{Check last version here}}
+\end{flushright}
 
-\renewcommand{\listitemsymbol}{-} % change the symbol for lists
+
 
 %\section{Extra 1}
 %\cvlistitem{Item 1}
