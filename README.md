@@ -4,7 +4,7 @@
 
 LaTeX source for my CV.
 
-[Click here](http://gerardbosch.github.io/cv) to see the up to date PDF version.
+[Click here](https://gerardbosch.github.io/cv) to see the up to date PDF version.
 
 👆 The PDF is build and published on GitHub Pages using GitHub Actions :)
 
