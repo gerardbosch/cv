@@ -33,6 +33,8 @@
 %\AtBeginDocument{\setlength{\maketitlenamewidth}{6cm}} % only for the classic theme, if you want to change the width of your name placeholder (to leave more space for your address details
 \AtBeginDocument{\recomputelengths}                     % required when changes are made to page layout lengths
 
+\usepackage{hanging} % hanging paragraph
+
 \nopagenumbers{} % uncomment to suppress automatic page numbering for CVs longer than one page
 % Page numbering provided by moderncv does no longer work atm, so manually add it
 \usepackage{lastpage}
@@ -116,7 +118,7 @@
   \href{https://cv.gerardbosch.xyz}{\emoji{person-gesturing-ok} \textcolor{black}{This CV is \textcolor{magenta}{live!} Click here to ensure you access the most \textbf{up-to-date} version \emoji{person-gesturing-ok}}}
 }\vspace{4ex}
 
-[ \emph{Read the résumé version at} \href{https://resume.gerardbosch.xyz}{https://resume.gerardbosch.xyz} ]
+[ \emph{Read the one-page résumé version at} \href{https://resume.gerardbosch.xyz}{https://resume.gerardbosch.xyz} ]
 
 % \vspace{-0.7cm}
 % \section{\textsc{Personal Information}}
@@ -160,7 +162,7 @@ Really concerned about the code itself, its readability, expressiveness and conc
     \item Implement upcoming business use cases as per new fee creation or regulatory compliance.
     \item Being a bank, testing is one of the most important and cared matters (pyramid testing, contract testing, regression, TDD,\ldots).
   \end{itemize}
-  \textbf{Keywords}: \textit{Kotlin, Spring Boot, Microservices, EDA, Kafka, REST, Postgres, Datadog, ELK, AWS, Hexagonal, Clean Architecture, Domain Driven Design.}
+  \hangpara{1.5em}{1}\textbf{Keywords}: \textit{Kotlin, Spring Boot, Microservices, EDA, Kafka, REST, Postgres, Datadog, ELK, Kibana, AWS, Hexagonal, Clean Architecture, Domain Driven Design.}
 }
 
 \tlcventry{2016}{2021}{Senior Software Engineer}{GFT IT Consulting}{Lleida/Barcelona}{}{
@@ -172,12 +174,14 @@ Really concerned about the code itself, its readability, expressiveness and conc
            Start redefining from scratch a whole new framework and development environment based on MsA, Spring Boot, API First, Event Driven, DDD, Hexagonal and so forth.
      \item \textit{Banc Sabadell}: PSD2 \& APIfication (2018--2020) \\[2pt]
            \textbf{Role}: Tech Lead (development team) \\[2pt]
-           Design and implement the APIs for the European regulatory PSD2 project, leading the first approach to API exposition for the Banc Sabadell. I worked both on the API definition side and the Architecture side, defining and implementing architectural components for the Microservices Architecture where I was established as the technical lead for the development team until post-production.
+           • Design and implement the APIs for the European regulatory PSD2 project, leading the first approach to API exposition for the Banc Sabadell. I worked both on the API definition side and the Architecture side, defining and implementing architectural components for the Microservices Architecture where I was established as the technical lead for the development team until post-production. \\[2pt]
+           • Defined and set up an \emph{API-First} approach with OpenAPI and API artifact (\textsc{dto}) generation with
+             CI integration, making API definition agnostic and decoupled from its implementation.
      \item \textit{Bankinter}: Microservice architecture (2017) \\[2pt]
            \textbf{Role}: Developer \\[2pt]
            Contribute in the development of an architecture for Bankinter based on MsA (Micro Services Architecture) with Java 8 and Spring Boot/Cloud. The built Architecture provides the pre-configured components: from security, logging, audit,\ldots~to cryptography; to allow developers to easily get started implementing microservices with not much Spring background required.
    \end{itemize}
-   \textbf{Keywords}: \textit{Spring, Java, Vavr, FP, OpenShift, OpenAPI, API-First, Blockchain.}
+   \hangpara{1.5em}{1}\textbf{Keywords}: \textit{Spring, Java, Vavr, FP, OpenShift, ELK, Kibana, OpenAPI, API-First, Blockchain.}
 }
 
 \tlcventry{2014}{2016}{Software Engineer}{ICG Software}{Torrefarrera, Lleida}{}{
@@ -188,7 +192,7 @@ Really concerned about the code itself, its readability, expressiveness and conc
   \item Research and use of cutting-edge technologies and libraries (Android data binding, Realm databases, Gson parser, Retrofit\ldots).
   \item Architectural and design patterns implementation.
 \end{itemize}
-\textbf{Keywords}: Java, C\#/.NET, Mobile apps, Android, Windows Phone, Realm, REST.
+\hangpara{1.5em}{1}\textbf{Keywords}: Java, C\#/.NET, Mobile apps, Android, Windows Phone, Realm, REST.
 }
 
 
@@ -199,7 +203,7 @@ Really concerned about the code itself, its readability, expressiveness and conc
  \item Design and implementation of a simulator, modelling of real plants topology and operation. Experimentation running bulk simulations in a cluster and automatic processing and representation of results.
  \item Implementation of algorithms based on \emph{Approximate Dynamic Programming} (Reinforcement Learning) in order to optimize operational plans of waste collecting plants.
 \end{itemize}
-\textbf{Keywords}: Approximate Dynamic Programming, ADP, Discrete Event Simulation, DES, Integer Linear Programming, ILP, modelling, data collection, AI, research, planning, optimization, Python.
+\hangpara{1.5em}{1}\textbf{Keywords}: Approximate Dynamic Programming, ADP, Discrete Event Simulation, DES, Integer Linear Programming, ILP, modelling, data collection, AI, research, planning, optimization, Python.
 }
 
 \tlcventry{2010}{2011}{Systems/comms operations}{Information Systems and Communications Area, University of Lleida}{Lleida}{}{
@@ -209,7 +213,7 @@ Really concerned about the code itself, its readability, expressiveness and conc
 \item Setting up of an open source system for the management of name servers (DNS) in the university.
 \item Installation and management of GNU/Linux servers and virtual machines.
 \end{itemize}
-\textbf{Keywords:} Linux, virtualization, servers, DNS, networking, groupware
+\hangpara{1.5em}{1}\textbf{Keywords:} Linux, virtualization, servers, DNS, networking, groupware
 } 
 
 
