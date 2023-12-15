@@ -4,16 +4,16 @@
 % conditions of the LaTeX Project Public License version 1.3c,
 % available at http://www.latex-project.org/lppl/.
 
-\documentclass[10pt,a4paper,colorlinks=true]{moderncv}
-
+\documentclass[10pt,a4paper,colorlinks=true]{moderncv} % includes Font Awesome
 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
 % \moderncvtheme[blue, roman]{casual}
 \moderncvtheme[blue]{classic}
+\renewcommand*{\labelitemi} {\strut\textcolor{color1}{\tiny\faCircle}} % default: \faCircle[regular] (regular style)
+%\faStyle{regular} % {regular, solid} default: regular. Font Awesome package included by moderncv
 
 \usepackage[english]{babel}
 
 \usepackage{lmodern} % Latin Modern fonts, vectorized improvement of Computer Modern
-\usepackage{fontawesome}
 \usepackage{emoji}
 \usepackage{changepage} % for the adjustwidth environment
 
@@ -39,7 +39,7 @@
 % Page numbering provided by moderncv does no longer work atm, so manually add it
 \usepackage{lastpage}
 \rfoot{\addressfont\itshape\textcolor{gray}{Page \thepage\ / \pageref*{LastPage}}}
-\lfoot{\href{https://github.com/gerardbosch/cv}{\textcolor{gray}{This CV is made with \LaTeX~/ built by \faGithubAlt~GitHub Actions / delivered via \faCloudDownload~Cloudflare}}}
+\lfoot{\href{https://github.com/gerardbosch/cv}{\textcolor{gray}{This CV is made with \LaTeX~/ built by \faGithub*~GitHub Actions / delivered via \faCloudflare~Cloudflare}}}
 
 %----------------------------------------------------------------------------------
 %  Fork me on GitHub
@@ -63,7 +63,7 @@
       \end{tikzpicture}
     };
     % workaround: the link needs to be defined using a \rotatebox{deg} because \node[rotate=deg]{\href} isn't rendered correctly
-    \node[shift={(0.25cm, 3.3cm)}, text centered, minimum width=50em, minimum height=3.0em, text=forkmefg](fmogh) at (0pt, 0pt) { 
+    \node[shift={(0.25cm, 3.3cm)}, text centered, minimum width=50em, minimum height=3.0em, text=forkmefg](fmogh) at (0pt, 0pt) {
       \href{https://github.com/gerardbosch/cv}{\rotatebox{45}{\setmainfont{Inter}\bfseries\color{white}{Fork me on GitHub}}}
     };
   \end{tikzpicture}
@@ -107,7 +107,7 @@
 %----------------------------------------------------------------------------------
 \begin{document}
 
-\forkme % keep this line together with \maketitle (with no line breaks) to avoid the ribbon text to be misplaced :-/
+\forkme% % keep this line together with \maketitle (with no line breaks) to avoid the ribbon text to be misplaced :-/
 \maketitle
 
 % Increase cventry vertical space
@@ -214,7 +214,7 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 \item Installation and management of GNU/Linux servers and virtual machines.
 \end{itemize}
 \hangpara{1.5em}{1}\textbf{Keywords:} Linux, virtualization, servers, DNS, networking, groupware
-} 
+}
 
 
 \section{\textsc{Technical Skills}}
