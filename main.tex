@@ -18,7 +18,7 @@
 \usepackage{changepage} % for the adjustwidth environment
 
 % Add a timeline on the left
-\usepackage[firstyear=2010, lastyear=2022]{moderntimeline}
+\usepackage[firstyear=2010, lastyear=2024]{moderntimeline}
 \setlength{\hintscolumnwidth}{4.1cm} % width of the timeline on your left
 
 % Globally modify itemsep on itemize environment
@@ -75,8 +75,8 @@
 
 \firstname{Gerard}
 \familyname{Bosch}
-\title{Curriculum Vitae}               % optional, remove the line if not wanted
-\address{\faMapMarker~ Barcelona, Spain}    % optional, remove the line if not wanted
+\title{Freelancer/Indep. Contractor}               % optional, remove the line if not wanted
+\address{\faGlobeAmericas~ US/EU Worldwide remote}    % optional, remove the line if not wanted
 %\mobile{}                                 % optional, remove the line if not wanted
 %\phone{}                                   % optional, remove the line if not wanted
 %\fax{fax (optional)}                       % optional, remove the line if not wanted
@@ -155,7 +155,19 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 
 % \renewcommand{\labelitemi}{$-$}
 
-\tlcventry{2021}{0}{Software Engineer}{N26 Bank}{Barcelona}{}{
+\tlcventry{2022}{0}{(Break) / Software Engineer}{Self employed}{Barcelona}{}{
+  \begin{itemize}\setlength\itemsep{-0.5pt}
+    \item I set up my own company to provide software engineering services as a contractor.
+    \item Algorithmic trading, research, design \& implementation of safety mechanisms for loss control, as well
+          as key metrics collection/reporting using DDD \& Hexagonal arch.
+    \item High level design of a multi-level affiliation system with referral fee distribution.
+    \item Took a break from industry. Learning about finances, markets and investments.
+  \end{itemize}
+  \vspace{-3pt}
+  \hangpara{1.5em}{1}\textbf{Keywords}: \textit{MQL, C++.}
+}
+
+\tlcventry{2021}{2022}{Software Engineer}{N26 Bank}{Barcelona}{}{
   Joined the fees team, which is in charge of designing and operating a new fee platform intended to be the new-standardized way of charging company-wide banking fees.
   \begin{itemize}\setlength\itemsep{4pt}
     \item That implied not only the creation of a dedicated microservice, also re-purposing and refactoring of existent ones along with APIs, as well as DB migrations.
@@ -166,7 +178,7 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 }
 
 \tlcventry{2016}{2021}{Senior Software Engineer}{GFT IT Consulting}{Lleida/Barcelona}{}{
-  \vspace{-5pt}
+  \vspace{-3pt}
   PROJECT HIGHLIGHTS (\textit{most relevant projects only}):
   \begin{itemize}\setlength\itemsep{4pt}
      \item \textit{Banc Sabadell}: Middleware Architecture (2020) \\[2pt]
@@ -174,8 +186,11 @@ Really concerned about the code itself, its readability, expressiveness, precisi
            Start redefining from scratch a whole new framework and development environment based on MsA, Spring Boot, API First, Event Driven, DDD, Hexagonal and so forth.
      \item \textit{Banc Sabadell}: PSD2 \& APIfication (2018--2020) \\[2pt]
            \textbf{Role}: Tech Lead (development team) \\[2pt]
-           • Design and implement the APIs for the European regulatory PSD2 project, leading the first approach to API exposition for the Banc Sabadell. I worked both on the API definition side and the Architecture side, defining and implementing architectural components for the Microservices Architecture where I was established as the technical lead for the development team until post-production. \\[2pt]
-           • Defined and set up an \emph{API-First} approach with OpenAPI and API artifact (\textsc{dto}) generation with
+           • Design and implement the APIs for the European regulatory project
+             \href{https://en.wikipedia.org/wiki/Payment_Services_Directive}{\textit{Payments Service Directive 2}}/\textsc{psd2}
+             (\textit{\href{https://en.wikipedia.org/wiki/Strong_customer_authentication}{Strong Customer Authentication}}/\textsc{sca}, Open Banking, Fintech integration,\ldots);
+             leading the first approach to API exposition for the \textit{Banc Sabadell}. I worked both on the API definition side and the Architecture side, defining and implementing architectural components for the Microservices Architecture, where I was established as the technical lead for the development team until post-production. \\[2pt]
+           • Defined and set up an \emph{API-First} approach with OpenAPI and API contracts generation (interfaces + \textsc{dto}) with
              CI integration, making API definition agnostic and decoupled from its implementation.
      \item \textit{Bankinter}: Microservice architecture (2017) \\[2pt]
            \textbf{Role}: Developer \\[2pt]
@@ -226,10 +241,10 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 %Distributed environments programming, RMI, Web Services.
 %}
 
-\cvcomputer{Programming languages}{Java, Scala, Kotlin, Bash, Haskell, Python, Perl, SQL.}
-           {Others}{Git, Maven/Gradle/sbt, JGitVer, Docker, OpenShift, Cloudflare, \LaTeX, Linux, Nix, GNU utils, Cloud Computing.}
+\cvcomputer{Programming languages}{Kotlin, Scala, Java, Bash, Haskell, Python, Perl, SQL.}
+           {Others}{Git, Maven/Gradle/sbt, JGitVer, Docker, OpenShift, Devcontainers, Testcontainers, DevOps, GitHub, GitLab, Cloudflare, \LaTeX, Linux, Nix, Cloud Computing.}
 
-\cvcomputer{Development methodologies}{FP patterns, GoF design patterns, SOLID, Clean Code, Hexagonal/Clean Architecture, Agile development, SCRUM, Domain Driven Design, TDD.}
+\cvcomputer{Development methodologies}{FP patterns, GoF design patterns, SOLID, Clean Code, Hexagonal/Clean Architecture, 12-Factor, Railway oriented programming, Agile development, SCRUM, Domain Driven Design, TDD.}
            {Interest Areas}{Functional Programming, Big/Fast Data \& Streaming, DLTs \& Blockchain, Artificial Intelligence.}
 
 
