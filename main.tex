@@ -1,25 +1,24 @@
-%% Copyright 2006-1008 Xavier Danaux (xdanaux@gmail.com).
+% moderncv CV
+%  docs: https://osl.ugr.es/CTAN/macros/latex/contrib/moderncv/manual/moderncv_userguide.pdf
+%  repo: https://github.com/moderncv/moderncv
 %
-% This work may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License version 1.3c,
-% available at http://www.latex-project.org/lppl/.
-
 \documentclass[10pt,a4paper,colorlinks=true]{moderncv} % includes Font Awesome
 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
 % \moderncvtheme[blue, roman]{casual}
 \moderncvtheme[blue]{classic}
 \renewcommand*{\labelitemi} {\strut\textcolor{color1}{\tiny\faCircle}} % default: \faCircle[regular] (regular style)
-%\faStyle{regular} % {regular, solid} default: regular. Font Awesome package included by moderncv
+% Font Awesome
+%\faStyle{regular} % {regular | solid} default: regular. Font Awesome package included by moderncv
 
 \usepackage[english]{babel}
-
 \usepackage{lmodern} % Latin Modern fonts, vectorized improvement of Computer Modern
 \usepackage{emoji}
 \usepackage{changepage} % for the adjustwidth environment
 
 % Add a timeline on the left
 \usepackage[firstyear=2010, lastyear=2024]{moderntimeline}
-\setlength{\hintscolumnwidth}{4.1cm} % width of the timeline on your left
+% \addtolength{\hintscolumnwidth}{3em} % width of the hints/timeline column
+\setlength{\hintscolumnwidth}{4.1cm} % width of the hints/timeline column (10-13 words for content line, small size)
 
 % Globally modify itemsep on itemize environment
 \usepackage{enumitem}
@@ -41,10 +40,32 @@
 \rfoot{\addressfont\itshape\textcolor{gray}{Page \thepage\ / \pageref*{LastPage}}}
 \lfoot{\href{https://github.com/gerardbosch/cv}{\textcolor{gray}{This CV is made with \LaTeX~/ built by \faGithub*~GitHub Actions / delivered via \faCloudflare~Cloudflare}}}
 
+% =====================
+% === Customization ===
+% =====================
+
+%----------------------------------------------------------------------------------
+% Double item with content length option
+%----------------------------------------------------------------------------------
+\makeatletter
+\define@key{cvdoubleitem}{cvdiItemSep}{\def\cvdoubleitem@iItemSep{#1}}
+\define@key{cvdoubleitem}{cvdiAddToLen}{\def\cvdoubleitem@addToLen{#1}}
+\newcommand*{\cvdoubleitemMy}[5][]{%
+  \setkeys{cvdoubleitem}{cvdiItemSep=0.5em, cvdiAddToLen=0pt, #1}%
+  \cvitem[\cvdoubleitem@iItemSep]{\textcolor{color1}{\textbf{#2}}}{% % Hint-1
+    % Content-1
+    \begin{minipage}[t]{\doubleitemcolumnwidth+\cvdoubleitem@addToLen}\small#3\end{minipage}%
+    \hfill% fill of \separatorcolumnwidth
+    % Hint-2
+    \begin{minipage}[t]{\hintscolumnwidth-\cvdoubleitem@addToLen*2}\raggedleft\hintstyle{\textcolor{color1}{\textbf{#4}}}\end{minipage}%
+    \hspace*{\separatorcolumnwidth}%
+    % Content-2
+    \begin{minipage}[t]{\doubleitemcolumnwidth+\cvdoubleitem@addToLen}\small#5\end{minipage}}}
+\makeatother
+
 %----------------------------------------------------------------------------------
 %  Fork me on GitHub
 %----------------------------------------------------------------------------------
-
 \usepackage{tikz}
 \usepackage{ifthen}
 \usepackage{xcolor}
@@ -153,8 +174,6 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 \vspace{-0.246cm}
 \section{\textsc{Professional Experience}}
 
-% \renewcommand{\labelitemi}{$-$}
-
 \tlcventry{2022}{0}{(Break) / Software Engineer}{Self employed}{Barcelona}{}{
   \begin{itemize}\setlength\itemsep{-0.5pt}
     \item I set up my own company to provide software engineering services as a contractor.
@@ -234,21 +253,17 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 
 \section{\textsc{Technical Skills}}
 
-%\cvdoubleitem{category 1}{XXX, YYY, ZZZ}{category 4}{XXX, YYY, ZZZ}
-%\cvdoubleitem{Operating Systems}{MS Windows, GNU/Linux (installation, administration, configuration and server administration.)}
-%{Networks}{Architectures and net protocols: TCP, UDP, HTTP, DNS, WLAN; routing, firewalling\ldots\\
-%Equipment and services configuration. \\
-%Distributed environments programming, RMI, Web Services.
-%}
+\cvdoubleitemMy[cvdiAddToLen=7ex]
+  {Programming\\ Languages}{Kotlin, Scala, Java, Bash, Haskell, Python, Perl, SQL.}
+  {Interest\\ Areas}{Functional Programming, Big/Fast Data \& Streaming, DLTs \& Blockchain, Artificial Intelligence.}
 
-\cvdoubleitem{Programming languages}{Kotlin, Scala, Java, Bash, Haskell, Python, Perl, SQL.}
-           {Others}{Git, Maven/Gradle/sbt, JGitVer, Docker, OpenShift, Devcontainers, Testcontainers, DevOps, GitHub, GitLab, Cloudflare, \LaTeX, Linux, Nix, Cloud Computing.}
-
-\cvdoubleitem{Development methodologies}{FP patterns, GoF design patterns, SOLID, Clean Code, Hexagonal/Clean Architecture, 12-Factor, Railway oriented programming, Agile development, SCRUM, Domain Driven Design, TDD.}
-           {Interest Areas}{Functional Programming, Big/Fast Data \& Streaming, DLTs \& Blockchain, Artificial Intelligence.}
+\cvdoubleitemMy[cvdiAddToLen=7ex]
+  {Development Methodologies}{FP patterns, GoF design patterns, SOLID, Clean Code, Hexagonal/Clean Architecture, 12-Factor, Railway oriented programming, Agile development, SCRUM, Domain Driven Design, TDD.}
+  {Others}{Git, Maven/Gradle/sbt, JGitVer, Docker, OpenShift, Devcontainers, Testcontainers, DevOps, GitHub, GitLab, Cloudflare, \LaTeX, Linux, Nix, Cloud Computing.}
 
 
 \section{\textsc{Courses and certifications}}
+
 \cventry{2020}{Big Data Foundations}{IBM Cognitive Class}{\href{https://www.youracclaim.com/badges/70dcdd97-4307-460a-8228-9a39a99b05de}{Course badge}}{}{}
 \cventry{2020}{Hadoop Foundations}{IBM Cognitive Class}{\href{https://www.youracclaim.com/badges/0bf1199a-0e3e-40a1-8bb8-bb1e765eaf64}{Course badge}}{}{}
 \cventry{2020}{Spark}{IBM Cognitive Class}{\href{https://www.youracclaim.com/badges/650e30f0-5b7b-49f4-ba74-4a957577b8a7}{Course badge}}{}{}
@@ -257,15 +272,19 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 \cventry{2018}{Leveraging Unstructured Data with Cloud Dataproc on Google Cloud Platform}{Coursera}{\href{https://www.coursera.org/account/accomplishments/verify/9KHX6ZSTUDHY}{Course accomplishment}}{}{}
 \cventry{2018}{Google Cloud Platform Big Data and Machine Learning Fundamentals}{Coursera}{\href{https://www.coursera.org/account/accomplishments/verify/BCSRMUPXQZB7}{Course accomplishment}}{}{}
 
+
 \section{\textsc{Conference Attendance}}
+
 \cventry{2020--2021}{\textnormal{Several online conferences, such as} JLove, Scala Love in the City, Haskell Love,\ldots}{online}{}{}{}
 \cventry{2019}{API Days}{Paris}{}{}{}
 \cventry{2018}{API Days}{Paris}{}{}{}
 \cventry{2018}{Ethereum Community Conference}{Paris}{}{}{}
 \cventry{2017}{JBcnConf}{Java \& JVM Conference}{Barcelona}{}{}
 
+
 \newpage
 \section{\textsc{Education}}
+
 %\cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}  % arguments 3 to 6 are optional
 \cventry{2011}{Master in Open Source Software Engineering}{University of Lleida}{Lleida / \textit{VIA University College} (Denmark)}{}{}
 \cventry{2011}{IT Engineering Higher Degree}{University of Lleida}{Lleida / \textit{VIA University College} (Denmark)}{}{}
@@ -273,6 +292,7 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 
 
 \section{\textsc{Final Degree Dissertations}}
+
 \subsection{Master in Open Source Software Engineering}
 %\cvline{title}{\emph{Title}}
 %\cvline{supervisors}{Supervisors}
@@ -300,8 +320,8 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 \cvline{}{\href{https://www.slideshare.net/rockingerard/implementaci-dels-codis-de-golay-en-sage}{\emoji{desktop-computer} Presentation »}}
 
 
-
 \section{\textsc{Languages}}
+
 \cvlanguage{English}{\parbox[t]{\textwidth}{Professional working proficiency\\
                                             \textsl{\small{B2 CEFR (Common European Framework of Reference)}}}}{}
 \cvlanguage{Catalan}{Mother tongue}{}
@@ -311,6 +331,7 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 %\cvline{hobby 1}{\small Description}
 %\cvline{hobby 2}{\small Description}
 %\cvline{hobby 3}{\small Description}
+
 
 \vspace{1.5em}
 \begin{flushright}
