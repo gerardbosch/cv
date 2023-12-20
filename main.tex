@@ -1,4 +1,4 @@
-% moderncv CV
+% Gerard Bosch long CV with moderncv package.
 %  docs: https://osl.ugr.es/CTAN/macros/latex/contrib/moderncv/manual/moderncv_userguide.pdf
 %  repo: https://github.com/moderncv/moderncv
 %
@@ -33,6 +33,7 @@
 \AtBeginDocument{\recomputelengths}                     % required when changes are made to page layout lengths
 
 \usepackage{hanging} % hanging paragraph
+\usepackage[normalem]{ulem} % [normalem] prevents the package from changing the default behavior of `\emph` to underline.
 
 \nopagenumbers{} % uncomment to suppress automatic page numbering for CVs longer than one page
 % Page numbering provided by moderncv does no longer work atm, so manually add it
@@ -43,6 +44,9 @@
 % =====================
 % === Customization ===
 % =====================
+
+% Custom command to specify the color in links
+\newcommand*{\hrefcol}[3][magenta]{\href{#2}{\textcolor{#1}{#3}}}
 
 %----------------------------------------------------------------------------------
 % Double item with content length option
@@ -96,16 +100,16 @@
 
 \firstname{Gerard}
 \familyname{Bosch}
-\title{Freelancer/Indep. Contractor}               % optional, remove the line if not wanted
+\title{Software Engineer,\\ \large{Freelancer/Indep. Contractor}} % optional, remove the line if not wanted
 \address{\faGlobeAmericas~ US/EU Worldwide remote}    % optional, remove the line if not wanted
 %\mobile{}                                 % optional, remove the line if not wanted
 %\phone{}                                   % optional, remove the line if not wanted
 %\fax{fax (optional)}                       % optional, remove the line if not wanted
 \email{gerard.bosch@gmail.com}              % optional, remove the line if not wanted
-
 \extrainfo{
   \faLinkedin~ \href{https://www.linkedin.com/in/gerard-bosch}{linkedin.com/in/gerard-bosch}\\
-  \faGithub~ \href{https://github.com/gerardbosch}{github.com/gerardbosch}
+  \faGithub~ \href{https://github.com/gerardbosch}{github.com/gerardbosch} \\
+  \faLaptop ~\href{https://gerardbosch.xyz}{gerardbosch.xyz}
 }
 
 \photo[64pt]{pic2.jpg}                         % '64pt' is the height the picture must be resized to and 'picture' is the name of the picture file; optional, remove the line if not wanted
@@ -139,7 +143,7 @@
   \href{https://cv.gerardbosch.xyz}{\emoji{person-gesturing-ok} \textcolor{black}{This CV is \textcolor{magenta}{live!} Click here to ensure you access the most \textbf{up-to-date} version \emoji{person-gesturing-ok}}}
 }\vspace{4ex}
 
-[ \emph{Read the one-page résumé version at} \href{https://resume.gerardbosch.xyz}{https://resume.gerardbosch.xyz} ]
+[ \emph{Read the one-page résumé version at} \href{https://resume.gerardbosch.xyz}{resume.gerardbosch.xyz} ]
 
 % \vspace{-0.7cm}
 % \section{\textsc{Personal Information}}
@@ -247,19 +251,33 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 \item Setting up of an open source system for the management of name servers (DNS) in the university.
 \item Installation and management of GNU/Linux servers and virtual machines.
 \end{itemize}
-\hangpara{1.5em}{1}\textbf{Keywords:} Linux, virtualization, servers, DNS, networking, groupware
+\hangpara{1.5em}{1}\textbf{Keywords:} Linux, virtualization, servers, DNS, networking, groupware.
 }
-
 
 \section{\textsc{Technical Skills}}
 
-\cvdoubleitemMy[cvdiAddToLen=7ex]
+\cvdoubleitemMy[cvdiAddToLen=37pt]
   {Programming\\ Languages}{Kotlin, Scala, Java, Bash, Haskell, Python, Perl, SQL.}
-  {Interest\\ Areas}{Functional Programming, Big/Fast Data \& Streaming, DLTs \& Blockchain, Artificial Intelligence.}
+  {Interest\\ Areas}{
+    Functional Programming,
+    \hrefcol[gray]{https://www.unison-lang.org/docs/the-big-idea/}{\dashuline{Unison lang}},
+    Effect Systems,
+    \hrefcol[gray]{https://zio.dev/}{\dashuline{ZIO}},
+    \hrefcol[gray]{https://getkyo.io}{\dashuline{Kyo}},\ldots \\
+    Big\slash Fast Data \& Streaming, DLTs\slash Blockchain \& Web3, Artificial Intelligence.
+  }
 
-\cvdoubleitemMy[cvdiAddToLen=7ex]
-  {Development Methodologies}{FP patterns, GoF design patterns, SOLID, Clean Code, Hexagonal/Clean Architecture, 12-Factor, Railway oriented programming, Agile development, SCRUM, Domain Driven Design, TDD.}
-  {Others}{Git, Maven/Gradle/sbt, JGitVer, Docker, OpenShift, Devcontainers, Testcontainers, DevOps, GitHub, GitLab, Cloudflare, \LaTeX, Linux, Nix, Cloud Computing.}
+\cvdoubleitemMy[cvdiAddToLen=37pt]
+  {Development Methodologies}{
+    FP patterns, GoF design patterns, SOLID, Clean Code, Hexagonal\slash Clean Architecture, 12-Factor,
+    \hrefcol[gray]{https://archive.ph/qVVD5}{\dashuline{ADTs}},
+    Programming with types,
+    \hrefcol[gray]{https://fsharpforfunandprofit.com/rop/}{\dashuline{Railway Oriented Prog.}},
+    Agile development, SCRUM, Domain Driven Design, TDD.
+  }
+  {Others}{
+    Git, Maven\slash Gradle\slash sbt, JGitVer, Docker, OpenShift, Devcontainers, Testcontainers, DevOps, GitHub, GitLab, Cloudflare, \LaTeX, Linux, Nix, Microservices, Cloud Native, OpenAPI, AsyncAPI, API first, oAuth.
+  }
 
 
 \section{\textsc{Courses and certifications}}
@@ -324,8 +342,8 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 
 \cvlanguage{English}{\parbox[t]{\textwidth}{Professional working proficiency\\
                                             \textsl{\small{B2 CEFR (Common European Framework of Reference)}}}}{}
-\cvlanguage{Catalan}{Mother tongue}{}
-\cvlanguage{Spanish}{Mother tongue}{}
+\cvlanguage{Catalan}{Native}{}
+\cvlanguage{Spanish}{Native}{}
 
 %\section{Interests}
 %\cvline{hobby 1}{\small Description}
