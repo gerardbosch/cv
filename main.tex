@@ -1,25 +1,24 @@
-%% Copyright 2006-1008 Xavier Danaux (xdanaux@gmail.com).
+% Gerard Bosch long CV with moderncv package.
+%  docs: https://osl.ugr.es/CTAN/macros/latex/contrib/moderncv/manual/moderncv_userguide.pdf
+%  repo: https://github.com/moderncv/moderncv
 %
-% This work may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License version 1.3c,
-% available at http://www.latex-project.org/lppl/.
-
 \documentclass[10pt,a4paper,colorlinks=true]{moderncv} % includes Font Awesome
 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
 % \moderncvtheme[blue, roman]{casual}
 \moderncvtheme[blue]{classic}
 \renewcommand*{\labelitemi} {\strut\textcolor{color1}{\tiny\faCircle}} % default: \faCircle[regular] (regular style)
-%\faStyle{regular} % {regular, solid} default: regular. Font Awesome package included by moderncv
+% Font Awesome
+%\faStyle{regular} % {regular | solid} default: regular. Font Awesome package included by moderncv
 
 \usepackage[english]{babel}
-
 \usepackage{lmodern} % Latin Modern fonts, vectorized improvement of Computer Modern
 \usepackage{emoji}
 \usepackage{changepage} % for the adjustwidth environment
 
 % Add a timeline on the left
-\usepackage[firstyear=2010, lastyear=2022]{moderntimeline}
-\setlength{\hintscolumnwidth}{4.1cm} % width of the timeline on your left
+\usepackage[firstyear=2010, lastyear=2024]{moderntimeline}
+% \addtolength{\hintscolumnwidth}{3em} % width of the hints/timeline column
+\setlength{\hintscolumnwidth}{4.1cm} % width of the hints/timeline column (10-13 words for content line, small size)
 
 % Globally modify itemsep on itemize environment
 \usepackage{enumitem}
@@ -34,6 +33,7 @@
 \AtBeginDocument{\recomputelengths}                     % required when changes are made to page layout lengths
 
 \usepackage{hanging} % hanging paragraph
+\usepackage[normalem]{ulem} % [normalem] prevents the package from changing the default behavior of `\emph` to underline.
 
 \nopagenumbers{} % uncomment to suppress automatic page numbering for CVs longer than one page
 % Page numbering provided by moderncv does no longer work atm, so manually add it
@@ -41,10 +41,35 @@
 \rfoot{\addressfont\itshape\textcolor{gray}{Page \thepage\ / \pageref*{LastPage}}}
 \lfoot{\href{https://github.com/gerardbosch/cv}{\textcolor{gray}{This CV is made with \LaTeX~/ built by \faGithub*~GitHub Actions / delivered via \faCloudflare~Cloudflare}}}
 
+% =====================
+% === Customization ===
+% =====================
+
+% Custom command to specify the color in links
+\newcommand*{\hrefcol}[3][magenta]{\href{#2}{\textcolor{#1}{#3}}}
+
+%----------------------------------------------------------------------------------
+% Double item with content length option
+%----------------------------------------------------------------------------------
+\makeatletter
+\define@key{cvdoubleitem}{cvdiItemSep}{\def\cvdoubleitem@iItemSep{#1}}
+\define@key{cvdoubleitem}{cvdiAddToLen}{\def\cvdoubleitem@addToLen{#1}}
+\newcommand*{\cvdoubleitemMy}[5][]{%
+  \setkeys{cvdoubleitem}{cvdiItemSep=0.5em, cvdiAddToLen=0pt, #1}%
+  \cvitem[\cvdoubleitem@iItemSep]{\textcolor{color1}{\textbf{#2}}}{% % Hint-1
+    % Content-1
+    \begin{minipage}[t]{\doubleitemcolumnwidth+\cvdoubleitem@addToLen}\small#3\end{minipage}%
+    \hfill% fill of \separatorcolumnwidth
+    % Hint-2
+    \begin{minipage}[t]{\hintscolumnwidth-\cvdoubleitem@addToLen*2}\raggedleft\hintstyle{\textcolor{color1}{\textbf{#4}}}\end{minipage}%
+    \hspace*{\separatorcolumnwidth}%
+    % Content-2
+    \begin{minipage}[t]{\doubleitemcolumnwidth+\cvdoubleitem@addToLen}\small#5\end{minipage}}}
+\makeatother
+
 %----------------------------------------------------------------------------------
 %  Fork me on GitHub
 %----------------------------------------------------------------------------------
-
 \usepackage{tikz}
 \usepackage{ifthen}
 \usepackage{xcolor}
@@ -75,16 +100,16 @@
 
 \firstname{Gerard}
 \familyname{Bosch}
-\title{Curriculum Vitae}               % optional, remove the line if not wanted
-\address{\faMapMarker~ Barcelona, Spain}    % optional, remove the line if not wanted
+\title{Software Engineer,\\ \large{Freelancer/Indep. Contractor}} % optional, remove the line if not wanted
+\address{\faGlobeAmericas~ US/EU Worldwide remote}    % optional, remove the line if not wanted
 %\mobile{}                                 % optional, remove the line if not wanted
 %\phone{}                                   % optional, remove the line if not wanted
 %\fax{fax (optional)}                       % optional, remove the line if not wanted
 \email{gerard.bosch@gmail.com}              % optional, remove the line if not wanted
-
 \extrainfo{
   \faLinkedin~ \href{https://www.linkedin.com/in/gerard-bosch}{linkedin.com/in/gerard-bosch}\\
-  \faGithub~ \href{https://github.com/gerardbosch}{github.com/gerardbosch}
+  \faGithub~ \href{https://github.com/gerardbosch}{github.com/gerardbosch} \\
+  \faLaptop ~\href{https://gerardbosch.xyz}{gerardbosch.xyz}
 }
 
 \photo[64pt]{pic2.jpg}                         % '64pt' is the height the picture must be resized to and 'picture' is the name of the picture file; optional, remove the line if not wanted
@@ -118,7 +143,7 @@
   \href{https://cv.gerardbosch.xyz}{\emoji{person-gesturing-ok} \textcolor{black}{This CV is \textcolor{magenta}{live!} Click here to ensure you access the most \textbf{up-to-date} version \emoji{person-gesturing-ok}}}
 }\vspace{4ex}
 
-[ \emph{Read the one-page résumé version at} \href{https://resume.gerardbosch.xyz}{https://resume.gerardbosch.xyz} ]
+[ \emph{Read the one-page résumé version at} \href{https://resume.gerardbosch.xyz}{resume.gerardbosch.xyz} ]
 
 % \vspace{-0.7cm}
 % \section{\textsc{Personal Information}}
@@ -131,7 +156,7 @@
 % \cvline{e-mail}{}
 
 \section{\textsc{Summary}}
-\vspace{1em}
+\vspace{1ex}
 \begin{adjustwidth}{1cm}{1.9cm}
 Enthusiast about Functional Programming, software engineering/craftsmanship, clean code, architectural/design patterns and programming languages theory.
 
@@ -139,23 +164,33 @@ My background is mostly about designing/implementing backend systems and APIs. I
 
 Really concerned about the code itself, its readability, expressiveness, precision and conciseness. Continuous improvement advocate \& continuous refactor and code reuse as a mantra. Accidental-complexity fighter. Curious by nature, proactive and self-taught. Like learning~\emoji{smiley}, love crafting \emoji{heart}.
 \end{adjustwidth}
-\vspace{1em}
+\vspace{1ex}
 
 \section{\textsc{Presentations}}
 
 %\cventry{year--year}{Job title}{Employer}{City}{}{Description}                % arguments 3 to 6 are optional
 %\cventry{year--year}{Job title}{Employer}{City}{}{Description line 1\newline{}Description line 2}% arguments 3 to 6 are optional
 
-\cventry{2020}{\href{https://bit.ly/fp-short-intro}{\textnormal{Functional Programming super-short intro}}}{}{}{}{}
-\cventry{2018}{\href{https://blockchain-presentation.gerardbosch.xyz}{\textnormal{A technical introduction to Blockchain technology}}}{}{}{}{}
+\vspace{-3pt}\cventry{2020}{\href{https://bit.ly/fp-short-intro}{\textnormal{Functional Programming super-short intro}}}{}{}{}{}
+\vspace{-4pt}\cventry{2018}{\href{https://blockchain-presentation.gerardbosch.xyz}{\textnormal{A technical introduction to Blockchain technology}}}{}{}{}{}
 
 
-\vspace{.3cm}
+\vspace{-0.246cm}
 \section{\textsc{Professional Experience}}
 
-% \renewcommand{\labelitemi}{$-$}
+\tlcventry{2022}{0}{(Break) / Software Engineer}{Self employed}{Barcelona}{}{
+  \begin{itemize}\setlength\itemsep{-0.5pt}
+    \item I set up my own company to provide software engineering services as a contractor.
+    \item Algorithmic trading, research, design \& implementation of safety mechanisms for loss control, as well
+          as key metrics collection/reporting using DDD \& Hexagonal arch.
+    \item High level design of a multi-level affiliation system with referral fee distribution.
+    \item Took a break from industry. Learning about finances, markets and investments.
+  \end{itemize}
+  \vspace{-3pt}
+  \hangpara{1.5em}{1}\textbf{Keywords}: \textit{MQL, C++.}
+}
 
-\tlcventry{2021}{0}{Software Engineer}{N26 Bank}{Barcelona}{}{
+\tlcventry{2021}{2022}{Software Engineer}{N26 Bank}{Barcelona}{}{
   Joined the fees team, which is in charge of designing and operating a new fee platform intended to be the new-standardized way of charging company-wide banking fees.
   \begin{itemize}\setlength\itemsep{4pt}
     \item That implied not only the creation of a dedicated microservice, also re-purposing and refactoring of existent ones along with APIs, as well as DB migrations.
@@ -166,7 +201,7 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 }
 
 \tlcventry{2016}{2021}{Senior Software Engineer}{GFT IT Consulting}{Lleida/Barcelona}{}{
-  \vspace{-5pt}
+  \vspace{-3pt}
   PROJECT HIGHLIGHTS (\textit{most relevant projects only}):
   \begin{itemize}\setlength\itemsep{4pt}
      \item \textit{Banc Sabadell}: Middleware Architecture (2020) \\[2pt]
@@ -174,8 +209,11 @@ Really concerned about the code itself, its readability, expressiveness, precisi
            Start redefining from scratch a whole new framework and development environment based on MsA, Spring Boot, API First, Event Driven, DDD, Hexagonal and so forth.
      \item \textit{Banc Sabadell}: PSD2 \& APIfication (2018--2020) \\[2pt]
            \textbf{Role}: Tech Lead (development team) \\[2pt]
-           • Design and implement the APIs for the European regulatory PSD2 project, leading the first approach to API exposition for the Banc Sabadell. I worked both on the API definition side and the Architecture side, defining and implementing architectural components for the Microservices Architecture where I was established as the technical lead for the development team until post-production. \\[2pt]
-           • Defined and set up an \emph{API-First} approach with OpenAPI and API artifact (\textsc{dto}) generation with
+           • Design and implement the APIs for the European regulatory project
+             \href{https://en.wikipedia.org/wiki/Payment_Services_Directive}{\textit{Payments Service Directive 2}}/\textsc{psd2}
+             (\textit{\href{https://en.wikipedia.org/wiki/Strong_customer_authentication}{Strong Customer Authentication}}/\textsc{sca}, Open Banking, Fintech integration,\ldots);
+             leading the first approach to API exposition for the \textit{Banc Sabadell}. I worked both on the API definition side and the Architecture side, defining and implementing architectural components for the Microservices Architecture, where I was established as the technical lead for the development team until post-production. \\[2pt]
+           • Defined and set up an \emph{API-First} approach with OpenAPI and API contracts generation (interfaces + \textsc{dto}) with
              CI integration, making API definition agnostic and decoupled from its implementation.
      \item \textit{Bankinter}: Microservice architecture (2017) \\[2pt]
            \textbf{Role}: Developer \\[2pt]
@@ -213,27 +251,37 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 \item Setting up of an open source system for the management of name servers (DNS) in the university.
 \item Installation and management of GNU/Linux servers and virtual machines.
 \end{itemize}
-\hangpara{1.5em}{1}\textbf{Keywords:} Linux, virtualization, servers, DNS, networking, groupware
+\hangpara{1.5em}{1}\textbf{Keywords:} Linux, virtualization, servers, DNS, networking, groupware.
 }
-
 
 \section{\textsc{Technical Skills}}
 
-%\cvcomputer{category 1}{XXX, YYY, ZZZ}{category 4}{XXX, YYY, ZZZ}
-%\cvcomputer{Operating Systems}{MS Windows, GNU/Linux (installation, administration, configuration and server administration.)}
-%{Networks}{Architectures and net protocols: TCP, UDP, HTTP, DNS, WLAN; routing, firewalling\ldots\\
-%Equipment and services configuration. \\
-%Distributed environments programming, RMI, Web Services.
-%}
+\cvdoubleitemMy[cvdiAddToLen=37pt]
+  {Programming\\ Languages}{Kotlin, Scala, Java, Bash, Haskell, Python, Perl, SQL.}
+  {Interest\\ Areas}{
+    Functional Programming,
+    \hrefcol[gray]{https://www.unison-lang.org/docs/the-big-idea/}{\dashuline{Unison lang}},
+    Effect Systems,
+    \hrefcol[gray]{https://zio.dev/}{\dashuline{ZIO}},
+    \hrefcol[gray]{https://getkyo.io}{\dashuline{Kyo}},\ldots \\
+    Big\slash Fast Data \& Streaming, DLTs\slash Blockchain \& Web3, Artificial Intelligence.
+  }
 
-\cvcomputer{Programming languages}{Java, Scala, Kotlin, Bash, Haskell, Python, Perl, SQL.}
-           {Others}{Git, Maven/Gradle/sbt, JGitVer, Docker, OpenShift, Cloudflare, \LaTeX, Linux, Nix, GNU utils, Cloud Computing.}
-
-\cvcomputer{Development methodologies}{FP patterns, GoF design patterns, SOLID, Clean Code, Hexagonal/Clean Architecture, Agile development, SCRUM, Domain Driven Design, TDD.}
-           {Interest Areas}{Functional Programming, Big/Fast Data \& Streaming, DLTs \& Blockchain, Artificial Intelligence.}
+\cvdoubleitemMy[cvdiAddToLen=37pt]
+  {Development Methodologies}{
+    FP patterns, GoF design patterns, SOLID, Clean Code, Hexagonal\slash Clean Architecture, 12-Factor,
+    \hrefcol[gray]{https://archive.ph/qVVD5}{\dashuline{ADTs}},
+    Programming with types,
+    \hrefcol[gray]{https://fsharpforfunandprofit.com/rop/}{\dashuline{Railway Oriented Prog.}},
+    Agile development, SCRUM, Domain Driven Design, TDD.
+  }
+  {Others}{
+    Git, Maven\slash Gradle\slash sbt, JGitVer, Docker, OpenShift, Devcontainers, Testcontainers, DevOps, GitHub, GitLab, Cloudflare, \LaTeX, Linux, Nix, Microservices, Cloud Native, OpenAPI, AsyncAPI, API first, oAuth.
+  }
 
 
 \section{\textsc{Courses and certifications}}
+
 \cventry{2020}{Big Data Foundations}{IBM Cognitive Class}{\href{https://www.youracclaim.com/badges/70dcdd97-4307-460a-8228-9a39a99b05de}{Course badge}}{}{}
 \cventry{2020}{Hadoop Foundations}{IBM Cognitive Class}{\href{https://www.youracclaim.com/badges/0bf1199a-0e3e-40a1-8bb8-bb1e765eaf64}{Course badge}}{}{}
 \cventry{2020}{Spark}{IBM Cognitive Class}{\href{https://www.youracclaim.com/badges/650e30f0-5b7b-49f4-ba74-4a957577b8a7}{Course badge}}{}{}
@@ -242,15 +290,19 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 \cventry{2018}{Leveraging Unstructured Data with Cloud Dataproc on Google Cloud Platform}{Coursera}{\href{https://www.coursera.org/account/accomplishments/verify/9KHX6ZSTUDHY}{Course accomplishment}}{}{}
 \cventry{2018}{Google Cloud Platform Big Data and Machine Learning Fundamentals}{Coursera}{\href{https://www.coursera.org/account/accomplishments/verify/BCSRMUPXQZB7}{Course accomplishment}}{}{}
 
+
 \section{\textsc{Conference Attendance}}
+
 \cventry{2020--2021}{\textnormal{Several online conferences, such as} JLove, Scala Love in the City, Haskell Love,\ldots}{online}{}{}{}
 \cventry{2019}{API Days}{Paris}{}{}{}
 \cventry{2018}{API Days}{Paris}{}{}{}
 \cventry{2018}{Ethereum Community Conference}{Paris}{}{}{}
 \cventry{2017}{JBcnConf}{Java \& JVM Conference}{Barcelona}{}{}
 
+
 \newpage
 \section{\textsc{Education}}
+
 %\cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}  % arguments 3 to 6 are optional
 \cventry{2011}{Master in Open Source Software Engineering}{University of Lleida}{Lleida / \textit{VIA University College} (Denmark)}{}{}
 \cventry{2011}{IT Engineering Higher Degree}{University of Lleida}{Lleida / \textit{VIA University College} (Denmark)}{}{}
@@ -258,6 +310,7 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 
 
 \section{\textsc{Final Degree Dissertations}}
+
 \subsection{Master in Open Source Software Engineering}
 %\cvline{title}{\emph{Title}}
 %\cvline{supervisors}{Supervisors}
@@ -267,11 +320,10 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 \cvline{advisor}{Dr. Carles Mateu Piñol, Department of Computer Science and Industrial Engineering, University of Lleida, Lleida.}
 \cvline{description}{Setting up an open source system for the name servers (DNS) management of the university. Integration of several open source components together with an LDAP database into ISC BIND name server. Implementation, configuration, integration and deployment of that system in the university's production infrastructure.}
 \cvline{}{\textsl{\textbf{Qualified} with honors.}}
-\cvline{document link}{\href{https://repositori.udl.cat/bitstream/handle/10459.1/45832/Bosch.pdf}{https://repositori.udl.cat/bitstream/handle/10459.1/45832/Bosch.pdf}}
-\cvline{}{\footnotesize{(Catalan + English full configuration guide)}}
-\cvline{presentation (English)}{\scalebox{.7}{\url{http://www.slideshare.net/rockingerard/sauron-system-implementation-and-deployment-for-dns-management}}}
+\cvline{}{\parbox{4cm}{\href{https://repositori.udl.cat/bitstream/handle/10459.1/45832/Bosch.pdf}{\emoji{notebook-with-decorative-cover} Dissertation »}}\footnotesize{(Catalan + English full configuration guide)}}
+\cvline{}{\parbox{4cm}{\href{https://www.slideshare.net/rockingerard/sauron-system-implementation-and-deployment-for-dns-management}{\emoji{desktop-computer} Presentation »}}\footnotesize{(English)}}
 
-
+\vspace{4pt}
 \subsection{IT Engineering Bachelor}
 %\cvline{title}{\emph{Title}}
 %\cvline{supervisors}{Supervisors}
@@ -282,21 +334,22 @@ Really concerned about the code itself, its readability, expressiveness, precisi
 \cvline{advisor}{Dr. Ramiro Moreno Chiral, Department of Mathematics, University of Lleida, Lleida.}
 \cvline{description}{Implementation of a kind of channel error correcting codes (ECC) inside mathematical Open Source Software package SAGE, which is built up in Python and just previously had a generic implementation for linear codes.}
 \cvline{}{\textsl{\textbf{Qualified} with honors.}}
-\cvline{document link}{\href{https://repositori.udl.cat/bitstream/handle/10459.1/45751/Bosch.pdf}{https://repositori.udl.cat/bitstream/handle/10459.1/45751/Bosch.pdf}}
-\cvline{presentation}{\scalebox{.85}{\url{http://www.slideshare.net/rockingerard/implementaci-dels-codis-de-golay-en-sage}}}
-
+\cvline{}{\href{https://repositori.udl.cat/bitstream/handle/10459.1/45751/Bosch.pdf}{\emoji{notebook-with-decorative-cover} Dissertation »}}
+\cvline{}{\href{https://www.slideshare.net/rockingerard/implementaci-dels-codis-de-golay-en-sage}{\emoji{desktop-computer} Presentation »}}
 
 
 \section{\textsc{Languages}}
+
 \cvlanguage{English}{\parbox[t]{\textwidth}{Professional working proficiency\\
                                             \textsl{\small{B2 CEFR (Common European Framework of Reference)}}}}{}
-\cvlanguage{Catalan}{Mother tongue}{}
-\cvlanguage{Spanish}{Mother tongue}{}
+\cvlanguage{Catalan}{Native}{}
+\cvlanguage{Spanish}{Native}{}
 
 %\section{Interests}
 %\cvline{hobby 1}{\small Description}
 %\cvline{hobby 2}{\small Description}
 %\cvline{hobby 3}{\small Description}
+
 
 \vspace{1.5em}
 \begin{flushright}
