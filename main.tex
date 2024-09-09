@@ -72,9 +72,10 @@
 %  Fork me on GitHub
 %----------------------------------------------------------------------------------
 \usepackage{tikz}
+\usetikzlibrary{shadows.blur}
+
 \usepackage{ifthen}
 \usepackage{xcolor}
-\usetikzlibrary{shadows.blur}
 
 \definecolor{forkmebg}{HTML}{3873b3}
 \definecolor{forkmefg}{HTML}{eeeeee}
@@ -128,6 +129,35 @@
 % }
 
 
+%----------------------------------------------------------------------------------------
+% 	ARROW GRAPHICS in Tikz
+%----------------------------------------------------------------------------------------
+
+% a six pointed arrow poiting to the left
+\newcommand{\tzlarrow}{(0,0) -- (0.2,0) -- (0.3,0.2) -- (0.2,0.4) -- (0,0.4) -- (0.1,0.2) -- cycle;}
+
+% include the left arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\larrow}[1]
+{\begin{tikzpicture}[scale=0.58]
+	 \filldraw[fill=#1!100,draw=#1!100!black]  \tzlarrow
+ \end{tikzpicture}
+}
+
+% a six pointed arrow pointing to the right
+\newcommand{\tzrarrow}{ (0,0.2) -- (0.1,0) -- (0.3,0) -- (0.2,0.2) -- (0.3,0.4) -- (0.1,0.4) -- cycle;}
+
+% include the right arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\rarrow}
+{\begin{tikzpicture}[scale=0.7]
+	\filldraw[fill=sectcol!100,draw=sectcol!100!black] \tzrarrow
+ \end{tikzpicture}
+}
+
+
 %----------------------------------------------------------------------------------
 % Content
 %----------------------------------------------------------------------------------
@@ -157,13 +187,30 @@
 % \cvline{e-mail}{}
 
 \section{\textsc{Summary}}
+
 \vspace{1ex}
+\begin{adjustwidth}{1.7cm}{2.8cm}
+  
+  \setlength{\parskip}{8pt}
+  
+  % \hangpara does not work in this environment :-/ use a parbox
+  \larrow{color1}
+  \parbox[t]{0.97\linewidth}{
+    Enthusiast about Functional Programming, software engineering/craftsmanship, clean code, architectural/design patterns and programming languages theory.
+  }
+
+  \larrow{color1}
+  \parbox[t]{0.97\linewidth}{
+    Good at identifying inefficiencies, \textcolor{brown}{finding solutions} and \textcolor{brown}{improving processes}. I enjoy collaborating with diverse teams to solve challenging problems.
+  }
+\end{adjustwidth}
+
+\vspace{8pt}
 \begin{adjustwidth}{1cm}{1.9cm}
-Enthusiast about Functional Programming, software engineering/craftsmanship, clean code, architectural/design patterns and programming languages theory.
+  \setlength{\parskip}{6pt}
+  My background is mostly about designing/implementing backend systems and APIs. I have good analysis skills and can break down requirements well and transform that into code.
 
-My background is mostly about designing/implementing backend systems and APIs. I have good analysis skills and can break down requirements well and transform that into code.
-
-Really concerned about the code itself, its readability, expressiveness, precision and conciseness. Continuous improvement advocate \& continuous refactor and code reuse as a mantra. Accidental-complexity fighter. Curious by nature, proactive and self-taught. Like learning~\emoji{smiley}, love crafting \emoji{heart}.
+  Really concerned about the code itself, its readability, expressiveness, precision and conciseness. Continuous improvement advocate \& continuous refactor and code reuse as a mantra. Accidental-complexity fighter. Curious by nature, proactive and self-taught. Like learning~\emoji{smiley}, love crafting \emoji{heart}.
 \end{adjustwidth}
 \vspace{1ex}
 
