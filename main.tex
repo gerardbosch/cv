@@ -17,7 +17,7 @@
 \usepackage{changepage} % for the adjustwidth environment
 
 % Add a timeline on the left
-\usepackage[firstyear=2010, lastyear=2024]{moderntimeline}
+\usepackage[firstyear=2010, lastyear=2026]{moderntimeline}
 % \addtolength{\hintscolumnwidth}{3em} % width of the hints/timeline column
 \setlength{\hintscolumnwidth}{4.1cm} % width of the hints/timeline column (10-13 words for content line, small size)
 
@@ -27,11 +27,43 @@
 
 % Adjust the page margins: Easy layout setup
 %\addtolength{\voffset}{1cm}
-\usepackage[scale=0.8]{geometry}
-\addtolength{\textheight}{1cm}
-%\setlength{\hintscolumnwidth}{3cm}						% if you want to change the width of the column with the dates
-%\AtBeginDocument{\setlength{\maketitlenamewidth}{6cm}} % only for the classic theme, if you want to change the width of your name placeholder (to leave more space for your address details
-\AtBeginDocument{\recomputelengths}                     % required when changes are made to page layout lengths
+%\setlength{\hintscolumnwidth}{3cm}
+%\AtBeginDocument{\setlength{\maketitlenamewidth}{6cm}}
+\AtBeginDocument{\recomputelengths}  % required when changes are made to page layout lengths
+
+% ── Continuous-page PDF (two-pass) ─────────────────────────────────────────
+% Pass 1: paperheight=1500mm (placeholder), textheight=1450mm. \pagetotal (the
+%         actual content height) is saved to cv_pageht.tex.
+% Pass 2: reads cv_pageht.tex, sets textheight = saved content height, and
+%         paperheight = content + 50mm (= the fixed non-body vertical space
+%         preserved from pass 1: 1500-1450=50mm). This means the footer lands
+%         right below the content and TikZ overlays see the correct page size.
+\makeatletter
+\InputIfFileExists{cv_pageht.tex}{}{}  % defines \cvPageTotalStr from previous run
+\@ifundefined{cvPageTotalStr}{%
+  \usepackage[scale=0.8, paperheight=1500mm, textheight=1450mm]{geometry}%
+}{%
+  \newlength{\@cvpaperht}%
+  \setlength{\@cvpaperht}{\cvPageTotalStr}%
+  \addtolength{\@cvpaperht}{50mm}%
+  \edef\@cvpaperhtstr{\the\@cvpaperht}%
+  \usepackage[scale=0.8, textheight=\cvPageTotalStr, paperheight=\@cvpaperhtstr]{geometry}%
+}
+\newwrite\@cvhtfile
+\AtBeginDocument{%
+  \let\ori@clearpage\clearpage
+  \renewcommand\clearpage{%
+    \par
+    \ifdim\pagetotal>0pt
+      \immediate\openout\@cvhtfile=cv_pageht.tex
+      \immediate\write\@cvhtfile{\string\def\string\cvPageTotalStr{\the\pagetotal}}%
+      \immediate\closeout\@cvhtfile
+    \fi
+    \ori@clearpage
+  }%
+}
+\makeatother
+% ───────────────────────────────────────────────────────────────────────────
 
 \usepackage{hanging} % hanging paragraph
 \usepackage[normalem]{ulem} % [normalem] prevents the package from changing the default behavior of `\emph` to underline.
@@ -39,8 +71,13 @@
 \nopagenumbers{} % uncomment to suppress automatic page numbering for CVs longer than one page
 % Page numbering provided by moderncv does no longer work atm, so manually add it
 \usepackage{lastpage}
-\rfoot{\addressfont\itshape\textcolor{gray}{Page \thepage\ / \pageref*{LastPage}}}
-\lfoot{\href{https://github.com/gerardbosch/cv}{\textcolor{gray}{This CV is made with \LaTeX~/ built by \faGithub*~GitHub Actions / delivered via \faCloudflare~Cloudflare}}}
+\newcommand{\cvbuildinfo}{%
+  \href{https://github.com/gerardbosch/cv}{\textcolor{gray}{CV made with \LaTeX~/ built by \faGithub*~GitHub Actions / delivered via \faCloudflare~Cloudflare}}%
+}
+\cfoot{\cvbuildinfo}
+%\rfoot{\addressfont\itshape\textcolor{gray}{Page \thepage\ / \pageref*{LastPage}}} % disable for continous scroll (single page)
+\rhead{\cvbuildinfo\hspace{1.0cm}}
+%\rhead{\addressfont\itshape\textcolor{gray}{Page \thepage\ / \pageref*{LastPage}}} % disable for continous scroll (single page)
 
 % =====================
 % === Customization ===
@@ -83,7 +120,7 @@
 % rotate and shift are hardcoded here because of the href workaround, see also https://gist.github.com/dokenzy/fe8967c8a5921191a261
 \newcommand{\forkme}{
   \begin{tikzpicture}[remember picture, overlay]
-    \node[rotate=45, shift={(0, -3.2cm)}] at (current page.north west) {
+    \node[rotate=45, shift={(0, -2.9cm)}] at (current page.north west) {
       \begin{tikzpicture}[remember picture, overlay]
         \node[fill=forkmebg, text centered, minimum width=50em, minimum height=3.0em, blur shadow, shadow yshift=0pt, shadow xshift=0pt, shadow blur radius=.4em, shadow opacity=50](fmogh) at (0pt, 0pt) {}; % workaround: text/link see below
         \draw[forkmefg!60, dashed, line width=.08em, dash pattern=on .5em off 1.5\pgflinewidth] (-25em,1.2em) rectangle (25em,-1.2em);
@@ -226,7 +263,35 @@
 % \vspace{-0.246cm}
 \section{\textsc{Professional Experience}}
 
-\tlcventry{2022}{0}{(Break) / Software Engineer}{Self employed}{Barcelona}{}{
+\tlcventry{2025}{0}{Software Engineer | Messaging + Recommendation}{Leboncoin.fr · Freelance}{Remote}{}{
+  \emoji{bullseye} \emph{Support the migration and handover of Adevinta's central messaging (chat) backend platform to Leboncoin, ensuring smooth transition to full ownership and autonomy. The system supports 20M+ monthly active users, tens of millions of conversations per month, and millions of daily messages through an Event-Driven Architecture (Kafka, Kafka Streams).} \\[1ex]
+  \emoji{bullseye} \emph{Created an architectural framework (Spring based) to be an umbrella of 30+ microservices and centralize service management, versioning and evolution, providing cross-cutting components for the Event-Driven system, and make maintenance and upgrades much easier. It strongly contributed to harmonize code.} \\[1ex]
+  \vspace{-3ex}
+  \begin{itemize}\setlength\itemsep{0pt}
+    \item Actively engage in the roadmap for 2026 through actionable initiatives.
+    \item Develop new features and modernize the codebase and microservices architecture to meet evolving business and system requirements, improving scalability, reliability, and maintainability.
+    \item Operate, troubleshoot, and optimize the system to ensure high availability, performance, and resilience in a large-scale distributed environment. Bridge original and new teams, driving knowledge transfer, collaboration, and alignment for successful migration.
+  \end{itemize}
+  % \vskip 0pt ends the paragraph without a \par token (\cventry is \newcommand*).
+  % \hangpara must stay ungrouped — a wrapping {…} would restore \hangindent to 0
+  % before \par fires and kill the hanging indent.
+  \noindent After the first year I switched to the Recommendation team to work on the Golang Backend for the Homepage \& Recommendation team which serves high-volume traffic and provides user personalized recommendations; interfacing with Frontend, ML and vector DB for ANN search and semantic search.
+  \vskip 1em
+  \hangpara{1.5em}{1}\textbf{Keywords}: \textit{Kotlin, Spring Boot, Kafka, Kafka Streams, Kubernetes, ScyllaDB, Postgres, Clickhouse, AWS, Go, Milvus/Zilliz\ldots}\\
+}
+
+\tlcventry{2024}{2025}{Backend Software Engineer | Quarkus, Reactive}{Tymit}{Remote}{}{
+  \emoji{bullseye} \emph{Authored an RFC with actionable proposals to align the current architecture with Clean Architecture™ \& SOLID principles, with a special focus on the Interface Segregation (ISP) and Single Responsibility Principle (SRP), plus other enhancements.} \\[-3ex]
+  \begin{itemize}\setlength\itemsep{0pt}
+    \item Engaged with the integrations team to support the migration of hundreds of thousands of customers into our system, while also developing new public-facing APIs to enable a new business model requiring first-party and third-party B2B backend integrations.
+    \item Improved testing reliability by introducing Property-Based Testing and showcasing its principles to the backend guild, ensuring more robust testing including edge-cases, generating thousands of test values.
+    \item Spearheaded API contract segregation into dedicated modules, enabling the publication of versioned API artifacts for seamless and efficient cross-service integration using Gradle, contributing to DX.
+    \item Shared coding best practices and actively contributed to code reviews and BE discussions.
+  \end{itemize}
+  \hangpara{1.5em}{1}\textbf{Keywords}: \textit{Quarkus, Microservices, Reactive Programming, AWS (ECS, DynamoDB, SQS, SNS, RDS), Liquibase,…} \\
+}
+
+\tlcventry{2022}{2023}{(Break) / Software Engineer}{Self employed}{Barcelona}{}{
   \emoji{bullseye} \emph{I set up my own company to provide software engineering services as a contractor.} \\[-3ex]
   \begin{itemize}\setlength\itemsep{-0.5pt}
     \item Algorithmic trading, research, design \& implementation of a risk management system for loss control, as well as key metrics collection/reporting using DDD \& Hexagonal arch.
